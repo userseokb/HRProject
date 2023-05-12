@@ -13,5 +13,19 @@ public class HomeController {
         return "index";
     }
 
+    //test
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+
+    //test2
+    @GetMapping("/tables")
+    public String tables() {
+        return "tables";
+    }
+
+
 
 }
