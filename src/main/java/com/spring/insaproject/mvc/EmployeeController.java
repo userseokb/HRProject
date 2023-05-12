@@ -27,4 +27,9 @@ public class EmployeeController {
         return "empl/empllist";
     }
 
+    @GetMapping("/empl/register")
+    public String registerEmplForm() {
+        return "empl/registerempl";
+    }
+
 }

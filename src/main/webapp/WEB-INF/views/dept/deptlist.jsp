@@ -90,7 +90,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/empl">사원 목록</a>
-                        <a class="collapse-item" href="utilities-border.html">사원 추가</a>
+                        <a class="collapse-item" href="/empl/register">사원 추가</a>
                         <a class="collapse-item" href="utilities-animation.html">추가 예정</a>
                         <a class="collapse-item" href="utilities-other.html">추가 예정</a>
                     </div>
