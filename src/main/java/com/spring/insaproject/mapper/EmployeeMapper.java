@@ -23,5 +23,8 @@ public interface EmployeeMapper {
 	//하나의 사원 정보 가져오기
 	public EmployeeOneInfo getEmployeeOneInfo(int empno);
 
+	//한 명의 Employee만의 정보 가져오기
+	public Employee getOneEmployee(int empno);
+
 
 }

@@ -19,6 +19,7 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    //사원 목록
     @GetMapping("/empl")
     public String emplList(Model model) {
         List<Employee> allEmployee = employeeService.getAllEmployee();
@@ -27,11 +28,13 @@ public class EmployeeController {
         return "empl/empllist";
     }
 
+    //사원 추가 폼
     @GetMapping("/empl/register")
     public String registerEmplForm() {
         return "empl/registerempl";
     }
 
+    //사원 추가
     @PostMapping("/empl/register")
     public String registerEmpl(@ModelAttribute Employee employee) {
         employee.setStatus("NORMAL");
@@ -40,6 +43,7 @@ public class EmployeeController {
             return "redirect:/empl";
     }
 
+    //사원 상세
     @GetMapping("/empl/{empno}")
     public String emplDetail(@PathVariable int empno, Model model) {
         EmployeeOneInfo result = employeeService.getEmployeeOneInfo(empno);
@@ -47,5 +51,33 @@ public class EmployeeController {
         log.info("one empl = {}", result);
         return "empl/empldetail";
     }
+
+    //사원 수정 폼
+    @GetMapping("/modify/empl/{empno}")
+    public String motifyEmplForm(@PathVariable int empno, Model model) {
+        Employee result = employeeService.getOneEmployee(empno);
+        model.addAttribute("employee", result);
+        log.info("one employee = {}", result);
+        return "empl/modifyempl";
+    }
+
+    //사원 수정
+    @PutMapping("/empl/{empno}")
+    public String modifyEmpl(@PathVariable int empno, @ModelAttribute Employee updateValue) {
+        Employee oriEmployee = employeeService.getOneEmployee(empno);
+        oriEmployee.setDeptno(updateValue.getDeptno());
+        oriEmployee.setEvalGrade(updateValue.getEvalGrade());
+        oriEmployee.setEname(updateValue.getEname());
+        oriEmployee.setAge(updateValue.getAge());
+        oriEmployee.setGender(updateValue.getGender());
+        oriEmployee.setPosition(updateValue.getPosition());
+        oriEmployee.setStatus(updateValue.getStatus());
+        oriEmployee.setSal(updateValue.getSal());
+        log.info("modified employee = {}", oriEmployee);
+        return null;
+//        return "redirect:/empl/" + empno;
+    }
+
+
 
 }

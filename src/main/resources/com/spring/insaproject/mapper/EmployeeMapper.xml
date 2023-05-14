@@ -70,7 +70,7 @@
                             where empl.empno = #{empno}
     </select>
 
-    <!--한 명의 사원 정보 불러오기(Employee만)-->
+    <!--한 명의 Employee만의 정보 가져오기 -->
     <select id="getOneEmployee" parameterType="int" resultType="Employee">
         SELECT
         empno,

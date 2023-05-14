@@ -52,6 +52,16 @@ public class EmployeeService {
         return result;
     }
 
+    //한 명의 Employee만의 정보 가져오기
+    public Employee getOneEmployee(int empno) {
+        Employee result = null;
+        result = employeeMapper.getOneEmployee(empno);
+        if(result == null) {
+            throw new EmplFailureException("Employee 정보 가져오기 실패");
+        }
+        return result;
+    }
+
 
 
 }
