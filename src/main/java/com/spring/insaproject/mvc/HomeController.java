@@ -21,9 +21,9 @@ public class HomeController {
 
 
     //test2
-    @GetMapping("/error")
+    @GetMapping("/empldetail")
     public String tables() {
-        return "error";
+        return "empl/empldetail";
     }
 
 
