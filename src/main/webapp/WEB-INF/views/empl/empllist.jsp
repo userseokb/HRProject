@@ -50,7 +50,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">사원 목록</h1>
-                    <p class="mb-4">현재 존재하는 사원 목록입니다.</p>
+                    <p class="mb-4">현재 존재하는 사원 목록입니다.<br>사원 번호를 클릭하시면 상세 사원정보로 이동합니다. </p>
 
                     <!-- DataTales Example 수정-->
                     <div class="card shadow mb-4">
@@ -62,7 +62,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>직원번호</th>
+                                            <th>사원번호</th>
                                             <th>부서번호</th>
                                             <th>평가등급</th>
                                             <th>이름</th>
@@ -77,7 +77,7 @@
                                     <!-- 반복 출력 추가 --!>
                                     <c:forEach items="${requestScope.allEmpl}" var="empl">
                                         <tr>
-                                            <td>${empl.empno}</td>
+                                            <td onClick="location.href='/empl/${empl.empno}'">${empl.empno}</td>
                                             <td>${empl.deptno}</td>
                                             <td>${empl.evalGrade}</td>
                                             <td>${empl.ename}</td>

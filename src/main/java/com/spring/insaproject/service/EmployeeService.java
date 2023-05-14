@@ -1,6 +1,7 @@
 package com.spring.insaproject.service;
 
 import com.spring.insaproject.dto.Employee;
+import com.spring.insaproject.dto.EmployeeOneInfo;
 import com.spring.insaproject.exception.EmplFailureException;
 import com.spring.insaproject.mapper.EmployeeMapper;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,16 @@ public class EmployeeService {
     //사원 중복 체크
     public int empnoDuplicateCheck(int empno) {
         int result = employeeMapper.empnoDuplicateCheck(empno);
+        return result;
+    }
+
+    //하나의 사원 정보 가져오기
+    public EmployeeOneInfo getEmployeeOneInfo(int empno) {
+        EmployeeOneInfo result = null;
+        result = employeeMapper.getEmployeeOneInfo(empno);
+        if(result == null) {
+            throw new EmplFailureException("사원 정보 가져오기 실패");
+        }
         return result;
     }
 

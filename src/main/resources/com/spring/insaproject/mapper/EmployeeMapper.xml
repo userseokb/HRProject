@@ -31,6 +31,60 @@
         select count(*) from employee where empno=#{empno}
     </select>
 
+    <!-- 한 명의 사원 정보 불러오기 -->
+
+    <resultMap type="Department" id="Department">
+        <result column="DEPTNO" property="deptno"/>
+        <result column="DNAME" property="dname"/>
+    </resultMap>
+
+    <resultMap type="Evaluation" id="Evaluation">
+        <result column="EVAL_GRADE" property="evalGrade"/>
+        <result column="SAL_CHANGE" property="salChange"/>
+        <result column="PROMOTION" property="promotion"/>
+    </resultMap>
+
+
+    <resultMap type="EmployeeOneInfo" id="EmployeeOneInfo">
+        <result column = "EMPNO" property="empno"/>
+        <result column = "DEPTNO" property="deptno"/>
+        <result column = "EVAL_GRADE" property="evalGrade"/>
+        <result column = "ENAME" property="ename"/>
+        <result column = "AGE" property="age"/>
+        <result column = "GENDER" property="gender"/>
+        <result column = "POSITION" property="position"/>
+        <result column = "STATUS" property="status"/>
+        <result column = "SAL" property="sal"/>
+        <collection property="department" resultMap="Department"/>
+        <collection property="evaluation" resultMap="Evaluation"/>
+    </resultMap>
+
+
+    <select id="getEmployeeOneInfo" parameterType="int" resultMap="EmployeeOneInfo">
+        select empl.empno, empl.deptno, empl.eval_grade, empl.ename, empl.age, empl.gender, empl.position,
+        empl.status, empl.sal, dept.deptno, dept.dname, eval.eval_grade, eval.sal_change, eval.promotion
+        from employee empl join department dept
+                            on empl.deptno=dept.deptno
+                           join evaluation eval
+                            on empl.eval_grade = eval.eval_grade
+                            where empl.empno = #{empno}
+    </select>
+
+    <!--한 명의 사원 정보 불러오기(Employee만)-->
+    <select id="getOneEmployee" parameterType="int" resultType="Employee">
+        SELECT
+        empno,
+        deptno,
+        eval_grade,
+        ename,
+        age,
+        gender,
+        position,
+        status,
+        sal
+        FROM employee
+        where empno = #{empno}
+    </select>
 
 
 
