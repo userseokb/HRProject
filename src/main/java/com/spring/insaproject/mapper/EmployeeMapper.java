@@ -14,6 +14,10 @@ public interface EmployeeMapper {
 	public List<Employee> getAllEmployee();
 
 	// 사원 등록
-	
+	public int insertEmployee(Employee empl);
+
+	//중복 사원 체크
+	public int empnoDuplicateCheck(int empno);
+
 
 }

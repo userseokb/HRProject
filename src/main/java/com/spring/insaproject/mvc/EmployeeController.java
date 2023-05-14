@@ -36,9 +36,10 @@ public class EmployeeController {
 
     @PostMapping("/empl/register")
     public String registerEmpl(@ModelAttribute Employee employee) {
-        employee.setStatus("normal");
+        employee.setStatus("NORMAL");
         log.info("registered empl = {}", employee);
-        return null;
+        employeeService.insertEmployee(employee);
+            return "redirect:/empl";
     }
 
 }

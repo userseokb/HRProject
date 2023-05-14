@@ -20,6 +20,16 @@
         FROM employee
     </select>
 
+    <!--사원 등록 -->
+    <insert id="insertEmployee" parameterType="Employee">
+    insert into employee(empno, deptno, eval_grade, ename, age, gender, position, status, sal)
+        values (#{empno}, #{deptno}, #{evalGrade}, #{ename}, #{age}, #{gender}, #{position}, #{status}, #{sal})
+    </insert>
+
+    <!--사원번호 중복 체크 -->
+    <select id="empnoDuplicateCheck" parameterType="int" resultType="int">
+        select count(*) from employee where empno=#{empno}
+    </select>
 
 
 

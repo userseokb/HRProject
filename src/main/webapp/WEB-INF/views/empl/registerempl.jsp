@@ -12,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <title>사원 추가</title>
     <!-- Custom fonts for this template-->
@@ -43,6 +44,7 @@
                                 <div class="form-group row">
                                 <input id="empno" name="empno" type="text" class="form-control form-control-user"
                                     placeholder="사원번호를 입력하세요">
+	        		                <span id="empnoMsg" style="font-size:11pt;"></span>
                                 </div>
                                 <div class="form-group row">
                                 <select id = "deptno" name = "deptno" class="form-select">
@@ -80,9 +82,9 @@
                                 <div class="form-group row">
                                 <select id = "position" name = "position" class="form-select">
                                     <option value = "" selected>직급을 선택하세요</option>
-                                    <option value="worker">사원</option>
-                                    <option value="deputy">대리</option>
-                                    <option value="chief">과장</option>
+                                    <option value="WORKER">사원</option>
+                                    <option value="DEPUTY">대리</option>
+                                    <option value="CHIEF">과장</option>
                                 </select>
                                 </div>
                                 <div class="form-group row">
@@ -111,7 +113,7 @@
     <!-- Custom scripts for all pages-->
     <script src="/bootstrap/js/sb-admin-2.min.js"></script>
 
-<script>
+<script type="text/javascript">
 function registerCheck() {
     var empno = document.getElementById("empno");
     var deptno = document.getElementById("deptno");
@@ -177,6 +179,22 @@ function registerCheck() {
       document.inputForm.submit(); //유효성 검사의 포인트
 
 }
+
+    const inputEmpno = document.getElementById('empno');	//input란의 체크을 위해 객체를 생성
+    const empnoMsg = document.getElementById('empnoMsg');	//input란의 체크을 위해 객체를 생성
+	inputEmpno.addEventListener('blur', () => {
+		axios.get('http://localhost:8083/api/empl/'+inputEmpno.value)
+			.then(response => {
+				if(response.data == 0) {
+					empnoMsg.innerHTML = '사용할 수 있는 사원 번호입니다';
+				} else if(response.data == 1) {
+				    empnoMsg.innerHTML = '중복된 사원 번호입니다';
+				} else if(response.data == 2) {
+				    empnoMsg.innerHTML = '문자가 입력 되었습니다';
+				}
+			})
+	});
+
 </script>
 
 </body>
