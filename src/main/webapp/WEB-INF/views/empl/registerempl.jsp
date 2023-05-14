@@ -13,8 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Register</title>
-
+    <title>사원 추가</title>
     <!-- Custom fonts for this template-->
     <link href="/bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
@@ -40,23 +39,59 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">사원 등록</h1>
                             </div>
-                            <form id="inputform" method="POST" class="user">
-                                <div class="form-group row">
-                                <input id="deptno" name="deptno" type="text" class="form-control form-control-user"
-                                    placeholder="부서번호를 입력하세요">
-                                </div>
+                            <form id="inputForm" name="inputForm" method="POST" class="user">
                                 <div class="form-group row">
                                 <input id="empno" name="empno" type="text" class="form-control form-control-user"
                                     placeholder="사원번호를 입력하세요">
                                 </div>
                                 <div class="form-group row">
-                                <input id="evalGrade" name="evalGrade" type="text" class="form-control form-control-user"
-                                    placeholder="사원 평가를 입력하세요(A,B,C,D)">
+                                <select id = "deptno" name = "deptno" class="form-select">
+                                    <option value = "" selected>부서를 선택하세요</option>
+                                    <option value=10>인사팀(HR)</option>
+                                    <option value=20>마케팅(Marketing)</option>
+                                    <option value=30>기획팀(Planning)</option>
+                                    <option value=40>개발팀(Development)</option>
+                                </select>
                                 </div>
-                                <a class="btn btn-primary btn-user btn-block" type="submit"
-                                onclick="document.getElementById('inputform').submit();">
+                                <div class="form-group row">
+                                <select id = "evalGrade" name = "evalGrade" class="form-select">
+                                    <option value = "" selected>사원의 평가를 선택하세요</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                    <option value="D">D</option>
+                                </select>
+                                </div>
+                                <div class="form-group row">
+                                <input id="ename" name="ename" type="text" class="form-control form-control-user"
+                                    placeholder="사원 이름을 입력하세요">
+                                </div>
+                                <div class="form-group row">
+                                <input id="age" name="age" type="text" class="form-control form-control-user"
+                                    placeholder="사원의 나이를 입력하세요">
+                                </div>
+                                <div class="form-group row">
+                                <select id = "gender" name = "gender" class="form-select">
+                                    <option value = "" selected>성별을 선택하세요</option>
+                                    <option value="M">남자</option>
+                                    <option value="F">여자</option>
+                                </select>
+                                </div>
+                                <div class="form-group row">
+                                <select id = "position" name = "position" class="form-select">
+                                    <option value = "" selected>직급을 선택하세요</option>
+                                    <option value="worker">사원</option>
+                                    <option value="deputy">대리</option>
+                                    <option value="chief">과장</option>
+                                </select>
+                                </div>
+                                <div class="form-group row">
+                                <input id="sal" name="sal" type="text" class="form-control form-control-user"
+                                    placeholder="연봉을 입력하세요">
+                                </div>
+                                <button class="btn btn-primary btn-user btn-block" onclick = "registerCheck();" type="button">
                                     등록
-                                </a>
+                                </button>
                             </form>
                         </div>
                     </div>
@@ -75,6 +110,74 @@
 
     <!-- Custom scripts for all pages-->
     <script src="/bootstrap/js/sb-admin-2.min.js"></script>
+
+<script>
+function registerCheck() {
+    var empno = document.getElementById("empno");
+    var deptno = document.getElementById("deptno");
+    var evalGrade = document.getElementById("evalGrade");
+    var ename = document.getElementById("ename");
+    var age = document.getElementById("age");
+    var gender = document.getElementById("gender");
+    var position = document.getElementById("position");
+    var sal = document.getElementById("sal");
+
+
+    var reg = /^[0-9]+$/; //숫자만 입력하는 정규식
+    if (!reg.test(empno.value)) {
+        alert("사원번호는 숫자만 입력할 수 있습니다.");
+        empno.focus();
+        return false;
+    };
+
+    var deptValue = (deptno.options[deptno.selectedIndex].value);
+    if(deptValue == "") {
+        alert("부서를 선택해 주세요");
+        return false;
+    };
+
+    var evalValue = (evalGrade.options[evalGrade.selectedIndex].value);
+    if(evalValue == "") {
+        alert("사원 평가를 선택해 주세요");
+        return false;
+    };
+
+    if (ename.value == "") {
+        alert("사원 이름을 입력해 주세요");
+        ename.focus();
+    return false;
+    };
+
+    if (!reg.test(age.value)) {
+        alert("나이는 숫자만 입력할 수 있습니다.");
+        age.focus();
+        return false;
+    };
+
+    var genderValue = (gender.options[gender.selectedIndex].value);
+    if(genderValue == "") {
+        alert("성별을 선택해 주세요");
+        return false;
+    };
+
+    var posiValue = (position.options[position.selectedIndex].value);
+    if(posiValue == "") {
+        alert("직급을 선택해 주세요");
+        return false;
+    };
+
+
+    if (!reg.test(sal.value)) {
+        alert("연봉은 숫자만 입력할 수 있습니다.");
+        sal.focus();
+        return false;
+    };
+
+      //입력 값 전송
+      document.inputForm.submit(); //유효성 검사의 포인트
+
+}
+</script>
 
 </body>
 

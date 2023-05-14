@@ -12,6 +12,8 @@ public interface EmployeeMapper {
 	
 	// 전체 사원 가져오기
 	public List<Employee> getAllEmployee();
+
+	// 사원 등록
 	
 
 }

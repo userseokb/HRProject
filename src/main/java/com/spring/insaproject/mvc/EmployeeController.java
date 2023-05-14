@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -30,6 +32,13 @@ public class EmployeeController {
     @GetMapping("/empl/register")
     public String registerEmplForm() {
         return "empl/registerempl";
+    }
+
+    @PostMapping("/empl/register")
+    public String registerEmpl(@ModelAttribute Employee employee) {
+        employee.setStatus("normal");
+        log.info("registered empl = {}", employee);
+        return null;
     }
 
 }
