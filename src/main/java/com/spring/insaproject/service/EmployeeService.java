@@ -62,6 +62,19 @@ public class EmployeeService {
         return result;
     }
 
+    //한 명의 사원 정보 수정하기
+    public void updateOneEmplInfo(Employee employee) {
+        int res = 0;
+        try {
+            res = employeeMapper.updateOneEmplInfo(employee);
+        }catch(DataAccessException e) {
+            throw new EmplFailureException(e);
+        }
+        if(res == 0) {
+            throw new EmplFailureException("사원 수정 실패");
+        }
+    }
+
 
 
 }

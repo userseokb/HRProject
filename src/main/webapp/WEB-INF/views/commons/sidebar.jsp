@@ -44,7 +44,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <!--<h6 class="collapse-header">Custom Components:</h6>--!>
                         <a class="collapse-item" href="/dept">부서 목록</a>
-                        <a class="collapse-item" href="cards.html">추가 예정</a>
                     </div>
                 </div>
             </li>
@@ -61,8 +60,6 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="/empl">사원 목록</a>
                         <a class="collapse-item" href="/empl/register">사원 추가</a>
-                        <a class="collapse-item" href="utilities-animation.html">추가 예정</a>
-                        <a class="collapse-item" href="utilities-other.html">추가 예정</a>
                     </div>
                 </div>
             </li>

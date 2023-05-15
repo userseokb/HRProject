@@ -86,6 +86,20 @@
         where empno = #{empno}
     </select>
 
+    <!-- 한 명의 사원 정보 수정 -->
+    <update id="updateOneEmplInfo" parameterType="Employee">
+        update employee
+        set deptno = #{deptno},
+        eval_grade = #{evalGrade},
+        ename = #{ename},
+        age = #{age},
+        gender = #{gender},
+        position = #{position},
+        status = #{status},
+        sal = #{sal}
+        where empno = #{empno}
+    </update>
+
 
 
 

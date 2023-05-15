@@ -20,12 +20,6 @@ public class HomeController {
     }
 
 
-    //test2
-    @GetMapping("/empldetail")
-    public String tables() {
-        return "empl/empldetail";
-    }
-
 
 
 }

@@ -74,8 +74,8 @@ public class EmployeeController {
         oriEmployee.setStatus(updateValue.getStatus());
         oriEmployee.setSal(updateValue.getSal());
         log.info("modified employee = {}", oriEmployee);
-        return null;
-//        return "redirect:/empl/" + empno;
+        employeeService.updateOneEmplInfo(oriEmployee);
+        return "redirect:/empl/" + empno;
     }
 
 
