@@ -111,6 +111,17 @@
     </select>
 
 
+    <!-- 사원의 상태 수 구하기 -->
+    <select id="getEmplStatusQuantity" resultType="StatusQuantity">
+        select
+        count(case when status='NORMAL' then 1 end ) as normal,
+        count(case when status='VACATION' then 1 end ) as vacation,
+        count(case when status='RESIGN' then 1 end ) as resign
+        from employee
+    </select>
+
+
+
 
 
 </mapper>

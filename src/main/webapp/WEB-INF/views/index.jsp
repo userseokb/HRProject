@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <title>메인 페이지</title>
 
     <!-- Custom fonts for this template-->
@@ -55,20 +55,6 @@
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">현재 직원 상태</h6>
-                                    <div class="dropdown no-arrow">
-                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
-                                            aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
-                                        </div>
-                                    </div>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
@@ -90,9 +76,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
                 <!-- /.container-fluid -->
 
@@ -131,7 +114,50 @@
 
     <!-- Page level custom scripts -->
     <script src="bootstrap/js/demo/chart-area-demo.js"></script>
-    <script src="bootstrap/js/demo/chart-pie-demo.js"></script>
+
+    <script>
+    var ctx = document.getElementById("myPieChart");
+    var config = {
+                   type: 'doughnut',
+                   data: {
+                     labels: ["정상", "휴가", "퇴사"],
+                     datasets: [{
+                       data: [60, 30, 10],
+                       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+                       hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+                       hoverBorderColor: "rgba(234, 236, 244, 1)",
+                     }],
+                   },
+                   options: {
+                     maintainAspectRatio: false,
+                     tooltips: {
+                       backgroundColor: "rgb(255,255,255)",
+                       bodyFontColor: "#858796",
+                       borderColor: '#dddfeb',
+                       borderWidth: 1,
+                       xPadding: 15,
+                       yPadding: 15,
+                       displayColors: false,
+                       caretPadding: 10,
+                     },
+                     legend: {
+                       display: false
+                     },
+                     cutoutPercentage: 80,
+                   },
+                 };
+
+    var myPieChart = new Chart(ctx, config);
+    var data = config.data.datasets[0].data;
+    axios.get('http://localhost:8083/api/empl/status')
+    		        .then(response => response.data)
+    		        .then(result => {
+    		        data[0] = result.normal;
+    		        data[1] = result.vacation;
+    		        data[2] = result.resign;
+    		        myPieChart.update();
+    		        });
+    </script>
 
 </body>
 

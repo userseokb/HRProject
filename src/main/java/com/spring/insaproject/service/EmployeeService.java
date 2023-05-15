@@ -3,6 +3,7 @@ package com.spring.insaproject.service;
 import com.spring.insaproject.dto.Employee;
 import com.spring.insaproject.dto.EmployeeOneInfo;
 import com.spring.insaproject.dto.LoginDto;
+import com.spring.insaproject.dto.StatusQuantity;
 import com.spring.insaproject.exception.EmplFailureException;
 import com.spring.insaproject.mapper.EmployeeMapper;
 import lombok.RequiredArgsConstructor;
@@ -86,6 +87,11 @@ public class EmployeeService {
     public int checkEmplHRByEmpno(int empno) {
         int result = employeeMapper.checkEmplHRByEmpno(empno);
         return result;
+    }
+
+    //사원의 상태 수 구하기
+    public StatusQuantity getEmplStatusQuantity() {
+        return employeeMapper.getEmplStatusQuantity();
     }
 
 

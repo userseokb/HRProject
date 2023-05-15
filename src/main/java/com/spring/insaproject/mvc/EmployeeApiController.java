@@ -1,13 +1,16 @@
 package com.spring.insaproject.mvc;
 
+import com.spring.insaproject.dto.StatusQuantity;
 import com.spring.insaproject.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class EmployeeApiController {
 
     private final EmployeeService employeeService;
@@ -26,4 +29,13 @@ public class EmployeeApiController {
         result = employeeService.empnoDuplicateCheck(Integer.parseInt(empno));
         return result;
     }
+
+    @GetMapping("/api/empl/status")
+    public StatusQuantity getEmplStatusQuantity() {
+        StatusQuantity result = employeeService.getEmplStatusQuantity();
+        log.info("status = {}", result);
+        return result;
+    }
+
+
 }

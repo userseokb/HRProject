@@ -6,6 +6,7 @@ import java.util.List;
 import com.spring.insaproject.dto.Employee;
 import com.spring.insaproject.dto.EmployeeOneInfo;
 import com.spring.insaproject.dto.LoginDto;
+import com.spring.insaproject.dto.StatusQuantity;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -35,4 +36,7 @@ public interface EmployeeMapper {
 
 	//사원번호로 사원이 인사팀인지 체크
 	public int checkEmplHRByEmpno(int empno);
+
+	//사원의 상태 수 구하기
+	public StatusQuantity getEmplStatusQuantity();
 }
