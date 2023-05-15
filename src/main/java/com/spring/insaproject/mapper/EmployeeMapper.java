@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.spring.insaproject.dto.Employee;
 import com.spring.insaproject.dto.EmployeeOneInfo;
+import com.spring.insaproject.dto.LoginDto;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -27,8 +28,11 @@ public interface EmployeeMapper {
 	public Employee getOneEmployee(int empno);
 
 	//한 명의 사원 정보 수정하기
-
 	public int updateOneEmplInfo(Employee empl);
 
+	//사원번호와 이름으로 사원이 존재하는지 체크
+	public int checkExistEmplByEmpnoAndEname(LoginDto loginDto);
 
+	//사원번호로 사원이 인사팀인지 체크
+	public int checkEmplHRByEmpno(int empno);
 }

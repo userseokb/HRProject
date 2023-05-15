@@ -2,6 +2,7 @@ package com.spring.insaproject.service;
 
 import com.spring.insaproject.dto.Employee;
 import com.spring.insaproject.dto.EmployeeOneInfo;
+import com.spring.insaproject.dto.LoginDto;
 import com.spring.insaproject.exception.EmplFailureException;
 import com.spring.insaproject.mapper.EmployeeMapper;
 import lombok.RequiredArgsConstructor;
@@ -73,6 +74,18 @@ public class EmployeeService {
         if(res == 0) {
             throw new EmplFailureException("사원 수정 실패");
         }
+    }
+
+    //사원번호와 이름으로 사원이 존재하는지 체크
+    public int checkExistEmplByEmpnoAndEname(LoginDto loginDto) {
+        int result = employeeMapper.checkExistEmplByEmpnoAndEname(loginDto);
+        return result;
+    }
+
+    //사원번호로 사원이 인사팀인지 체크
+    public int checkEmplHRByEmpno(int empno) {
+        int result = employeeMapper.checkEmplHRByEmpno(empno);
+        return result;
     }
 
 

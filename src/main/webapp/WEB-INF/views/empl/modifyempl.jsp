@@ -46,7 +46,7 @@
                                     value="${employee.empno}" readonly>
                                 </div>
                                 <div class="form-group row">
-                                <select id = "deptno" name = "deptno" class="form-select">
+                                <select id = "deptno" name = "deptno" class="form-control">
                                     <option value = "" selected>부서를 선택하세요</option>
                                     <option value=10>인사팀(HR)</option>
                                     <option value=20>마케팅(Marketing)</option>
@@ -55,7 +55,7 @@
                                 </select>
                                 </div>
                                 <div class="form-group row">
-                                <select id = "evalGrade" name = "evalGrade" class="form-select">
+                                <select id = "evalGrade" name = "evalGrade" class="form-control">
                                     <option value = "" selected>사원의 평가를 선택하세요</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
@@ -72,14 +72,14 @@
                                     value="${employee.age}" placeholder="사원의 나이를 입력하세요">
                                 </div>
                                 <div class="form-group row">
-                                <select id = "gender" name = "gender" class="form-select">
+                                <select id = "gender" name = "gender" class="form-control">
                                     <option value = "" selected>성별을 선택하세요</option>
                                     <option value="M">남자</option>
                                     <option value="F">여자</option>
                                 </select>
                                 </div>
                                 <div class="form-group row">
-                                <select id = "position" name = "position" class="form-select">
+                                <select id = "position" name = "position" class="form-control">
                                     <option value = "" selected>직급을 선택하세요</option>
                                     <option value="WORKER">사원</option>
                                     <option value="DEPUTY">대리</option>
@@ -87,7 +87,7 @@
                                 </select>
                                 </div>
                                 <div class="form-group row">
-                                <select id = "status" name = "status" class="form-select">
+                                <select id = "status" name = "status" class="form-control">
                                     <option value = "" selected>현재 사원의 상태를 선택하세요</option>
                                     <option value="NORMAL">정상</option>
                                     <option value="VACATION">휴가</option>
